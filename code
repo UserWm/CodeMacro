@@ -1,0 +1,20 @@
+Private Sub Workbook_Open()
+    
+   fecha = Format(Now(), "yymmdd")
+   tipo = Application.InputBox("¿Que tipo de libro va guardar?")
+   fac = Application.InputBox("Codigo de Factura")
+ 
+   
+  
+If tipo = "Compras" Or tipo = "compras" Or tipo = "Compra" Or tipo = "compra" Then
+   ActiveWorkbook.SaveAs Filename:= _
+        "C:\Compras\" & "Compra" & fac & "-" & fecha, FileFormat:=xlOpenXMLWorkbookMacroEnabled, Password:="", WriteResPassword:="", ReadOnlyRecommended:=True
+             Worksheets("Hoja1").Range("D2") = fac
+ElseIf tipo = "Ventas" Or tipo = "ventas" Or tipo = "Venta" Or tipo = "venta" Then
+ ActiveWorkbook.SaveAs Filename:= _
+        "C:\Ventas\" & "Venta" & fac & "-" & fecha, FileFormat:=xlOpenXMLWorkbookMacroEnabled, Password:="", WriteResPassword:="", ReadOnlyRecommended:=True
+             Worksheets("Hoja1").Range("D2") = fac
+End If
+
+
+End Sub
